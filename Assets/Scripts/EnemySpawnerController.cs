@@ -9,7 +9,7 @@ public class EnemySpawnerController : MonoBehaviour
     
     enum Difficulties {Easy=1, Normal, Hard};
     [SerializeField] private Difficulties difficulty;
-    public Vector3 newPosition;
+
     private float startDelay = 1.0f;
     private float repeatRate = 2.0f;
 
@@ -40,9 +40,10 @@ public class EnemySpawnerController : MonoBehaviour
     public void SpawnEnemy()
     {
         float angle = Random.Range(0f, 360f);
+        float distanceFromPlayer = Random.Range(15f, 20f);
 
-        newPosition = playerPrefab.transform.position + new Vector3 (Mathf.Cos(angle),0,Mathf.Sin(angle))*20;
-        Instantiate(enemyPrefab, newPosition, Quaternion.identity);
+        Vector3 spawnPosition = playerPrefab.transform.position + new Vector3 (Mathf.Cos(angle),0,Mathf.Sin(angle))*distanceFromPlayer;
+        Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
     }
 }
 
