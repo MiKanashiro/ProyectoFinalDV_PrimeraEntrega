@@ -96,5 +96,6 @@ public class PlayerController : MonoBehaviour
         // Rotate towards camera direction
         Quaternion targetRotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, 0);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, smootRotation);
+
     }
 }
