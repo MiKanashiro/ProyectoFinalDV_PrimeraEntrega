@@ -6,13 +6,19 @@ public class EnemyController : MonoBehaviour
 {
     float speedEnemy = 1f;
     float speedToLook = 2f;
+    private Animator animator;
+    private int movement;
     [SerializeField]
     float currentHeal = 100f;
+
+
     public GameObject player;
 
-    void Start()
-    {
 
+    void Awake()
+    {
+        animator = GetComponent<Animator>();
+        movement = Animator.StringToHash("Movement");
     }
 
     // Update is called once per frame
@@ -29,6 +35,7 @@ public class EnemyController : MonoBehaviour
     {
         Vector3 direction = (player.transform.position - transform.position).normalized;
         transform.position += speedEnemy * direction * Time.deltaTime;
+        animator.Play(movement);
     }
 
     private void LookAt()
