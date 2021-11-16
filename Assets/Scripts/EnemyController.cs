@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    float speedEnemy = 0.5f;
+    [SerializeField]
+    float speedEnemy = 5f;
+    [SerializeField]
     float speedToLook = 2f;
     private Animator animator;
     private int movement;
@@ -30,8 +32,7 @@ public class EnemyController : MonoBehaviour
 
     private void MoveTowards()
     {
-        Vector3 direction = (player.transform.position - transform.position).normalized;
-        transform.position += speedEnemy * direction * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speedEnemy * Time.deltaTime);
         animator.Play(movement);
     }
 
@@ -52,9 +53,11 @@ public class EnemyController : MonoBehaviour
     {
         currentHeal += heal;
 
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             Destroy(collision.gameObject);
         }

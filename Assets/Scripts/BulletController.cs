@@ -36,7 +36,7 @@ public class BulletController : MonoBehaviour
         ContactPoint contact = collision.GetContact(0);
         //magic number = offset for bullets decals;
         GameObject.Instantiate(bulletDecal, contact.point + contact.normal * 0.001f, Quaternion.LookRotation(contact.normal)); 
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             Destroy(collision.gameObject,1f);
             Destroy(this.bulletDecal, 1f);

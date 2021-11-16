@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7343868319953693234}
   - component: {fileID: 7343868319953693235}
   - component: {fileID: 7427993780053138843}
+  - component: {fileID: 6192565417028985501}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -60,8 +61,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509d410732fd6294fa1eb1bda0325c34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedEnemy: 5
+  speedToLook: 2
   currentHeal: 100
-  player: {fileID: 8871149897772892283, guid: 6b8ba4de896a7674d9b3e8020852961b, type: 3}
+  player: {fileID: 6117795766422265325, guid: 6b8ba4de896a7674d9b3e8020852961b, type: 3}
 --- !u!95 &7427993780053138843
 Animator:
   serializedVersion: 3
@@ -81,6 +84,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!54 &6192565417028985501
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7343868319953693232}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &6076873110481016171
 PrefabInstance:
   m_ObjectHideFlags: 0
