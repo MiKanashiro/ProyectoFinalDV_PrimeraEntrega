@@ -10,10 +10,11 @@ public class BulletController : MonoBehaviour
     private GameObject bulletDecal;
 
     private float speed = 50f;
-    private float timeToDestroy = 3f;
+    private float timeToDestroy = 1f;
 
     public Vector3 target { get; set; }
     public bool hit { get; set; }
+
 
     private void OnEnable()
     {
@@ -29,12 +30,16 @@ public class BulletController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+ 
     private void OnCollisionEnter(Collision collision)
     {
         ContactPoint contact = collision.GetContact(0);
-        // magic number = offset for bullets decals
-        GameObject.Instantiate(bulletDecal, contact.point + contact.normal * 0.001f, Quaternion.LookRotation(contact.normal)); ;
-        Destroy(gameObject);
+        //magic number = offset for bullets decals;
+        GameObject.Instantiate(bulletDecal, contact.point + contact.normal * 0.001f, Quaternion.LookRotation(contact.normal)); 
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Destroy(collision.gameObject,1f);
+            Destroy(this.bulletDecal, 1f);
+        }
     }
 }

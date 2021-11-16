@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    float speedEnemy = 1f;
+    float speedEnemy = 0.5f;
     float speedToLook = 2f;
     private Animator animator;
     private int movement;
@@ -24,11 +24,8 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((player.transform.position - transform.position).magnitude > 2)
-        {
-            LookAt();
-            MoveTowards();
-        }
+        LookAt();
+        MoveTowards();
     }
 
     private void MoveTowards()
@@ -54,5 +51,12 @@ public class EnemyController : MonoBehaviour
     public void healing(float heal)
     {
         currentHeal += heal;
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }
