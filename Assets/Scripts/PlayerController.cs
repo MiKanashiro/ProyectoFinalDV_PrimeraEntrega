@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    private float playerSpeed = 2.0f;
+    private float playerSpeed = 10.0f;
     [SerializeField]
     private float jumpHeight = 1.0f;
     [SerializeField]
@@ -29,6 +29,24 @@ public class PlayerController : MonoBehaviour
     private InputAction shootAction;
 
     private Transform cameraTransform;
+    private Animator animator;
+    int moveXAnimationParameterId;
+    int moveZAnimationParameterId;
+    int jumpAnimation;
+
+    Vector2 currentAnimationBlendVector;
+    Vector2 animationVelocity;
+
+    [SerializeField]
+    private float animationSmoothTime = 0.05f;
+
+    [SerializeField]
+    private float animatonPlayTransition = 0.15f;
+
+    [SerializeField]
+    private Transform aimTarget;
+    [SerializeField]
+    private float aimDistance = 10f;
 
     private void Awake()
     {
@@ -39,6 +57,10 @@ public class PlayerController : MonoBehaviour
         shootAction = playerInput.actions["Shoot"];
         cameraTransform = Camera.main.transform;
         Cursor.lockState = CursorLockMode.Locked;
+        animator = GetComponent<Animator>();
+        moveXAnimationParameterId = Animator.StringToHash("MoveX");
+        moveZAnimationParameterId = Animator.StringToHash("MoveZ");
+        jumpAnimation = Animator.StringToHash("Jump");
     }
 
     private void OnEnable()
@@ -73,21 +95,27 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
+        setAimDistance();
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
             playerVelocity.y = 0f;
         }
         Vector2 input = moveAction.ReadValue<Vector2>();
-        Vector3 move = new Vector3(input.x, 0, input.y);
+        currentAnimationBlendVector = Vector2.SmoothDamp(currentAnimationBlendVector, input, ref animationVelocity, animationSmoothTime);
+        Vector3 move = new Vector3(currentAnimationBlendVector.x, 0, currentAnimationBlendVector.y);
         move = move.x * cameraTransform.right.normalized + move.z * cameraTransform.forward.normalized;
         move.y = 0f;
         controller.Move(move * Time.deltaTime * playerSpeed);
-            
+        animator.SetFloat(moveXAnimationParameterId, currentAnimationBlendVector.x);
+        animator.SetFloat(moveZAnimationParameterId, currentAnimationBlendVector.y);
+
         // Changes the height position of the player..
         if (jumpAction.triggered && groundedPlayer)
         {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+            animator.CrossFade(jumpAnimation, animatonPlayTransition);
         }
 
         playerVelocity.y += gravityValue * Time.deltaTime;
@@ -96,5 +124,11 @@ public class PlayerController : MonoBehaviour
         // Rotate towards camera direction
         Quaternion targetRotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, 0);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, smootRotation);
+    }
+
+
+    void setAimDistance()
+    {
+        aimTarget.position = cameraTransform.position + cameraTransform.forward * aimDistance;
     }
 }

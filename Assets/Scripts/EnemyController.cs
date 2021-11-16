@@ -6,6 +6,8 @@ public class EnemyController : MonoBehaviour
 {
     float speedEnemy = 1f;
     float speedToLook = 2f;
+    [SerializeField]
+    float currentHeal = 100f;
     public GameObject player;
 
     void Start()
@@ -22,14 +24,28 @@ public class EnemyController : MonoBehaviour
             MoveTowards();
         }
     }
+
     private void MoveTowards()
     {
         Vector3 direction = (player.transform.position - transform.position).normalized;
         transform.position += speedEnemy * direction * Time.deltaTime;
     }
+
     private void LookAt()
     {
         Quaternion newRotation = Quaternion.LookRotation(player.transform.position - transform.position);
         transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, speedToLook * Time.deltaTime);
+    }
+
+    //bullets
+    public void takeDamage(float damage)
+    {
+        currentHeal -= damage;
+    }
+
+    //zombies eat
+    public void healing(float heal)
+    {
+        currentHeal += heal;
     }
 }
