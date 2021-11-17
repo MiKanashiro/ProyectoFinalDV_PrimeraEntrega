@@ -4,25 +4,21 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
-    private int scoreInstanciado;
+    public static GameManager Instance { get; private set; }
+    private int scoreInstance;
 
     private void Awake()
     {
-        if(instance==null)
+        if(Instance==null)
         {
-            instance = this;
-            scoreInstanciado = 0;
+            Instance = this;
+            scoreInstance = 0;
             DontDestroyOnLoad(this.gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
-    }
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
@@ -31,12 +27,13 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public static void addScore()
+    // todo migrate this logic to another class that contains logic of score/points
+    public void addScore()
     {
-        instance.scoreInstanciado += 1;
+        Instance.scoreInstance += 1;
     }
-    public static int getScore()
+    public int getScore()
     {
-        return instance.scoreInstanciado;
+        return Instance.scoreInstance;
     }
 }

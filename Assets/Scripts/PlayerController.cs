@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        
         controller = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions["Move"];
@@ -62,10 +63,7 @@ public class PlayerController : MonoBehaviour
         moveZAnimationParameterId = Animator.StringToHash("MoveZ");
         jumpAnimation = Animator.StringToHash("Jump");
     }
-    void Start()
-    {
 
-    }
     private void OnEnable()
     {
         shootAction.performed += _ => ShootGun();

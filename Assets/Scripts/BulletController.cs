@@ -14,16 +14,13 @@ public class BulletController : MonoBehaviour
 
     public Vector3 target { get; set; }
     public bool hit { get; set; }
-
+    
 
     private void OnEnable()
     {
         Destroy(gameObject, timeToDestroy);
     }
-    void Start()
-    {
 
-    }
     // Update is called once per frame
     void Update()
     {
@@ -38,17 +35,19 @@ public class BulletController : MonoBehaviour
     {
         ContactPoint contact = collision.GetContact(0);
 
-        GameObject.Instantiate(bulletDecal, contact.point + contact.normal * 0.001f, Quaternion.LookRotation(contact.normal)); 
+        // todo destroy instance with body 
+        //GameObject.Instantiate(bulletDecal, contact.point + contact.normal * 0.001f, Quaternion.LookRotation(contact.normal)); 
         
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            
-            Destroy(collision.gameObject,1f);
-            
+          
+            GameManager.Instance.addScore();
+            print("Score: " + GameManager.Instance.getScore());
+            Destroy(collision.gameObject, 1f);
             //GameManager.addScore();
             //Debug.Log(GameManager.getScore());
 
-            
+
         }
     }
 }
