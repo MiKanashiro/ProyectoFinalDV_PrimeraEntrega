@@ -64,7 +64,12 @@ MonoBehaviour:
   speedEnemy: 5
   speedToLook: 2
   currentHeal: 100
-  player: {fileID: 6117795766422265325, guid: 6b8ba4de896a7674d9b3e8020852961b, type: 3}
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 8
+  canSeePlayer: 0
+  radius: 30
+  angle: 360
 --- !u!95 &7427993780053138843
 Animator:
   serializedVersion: 3

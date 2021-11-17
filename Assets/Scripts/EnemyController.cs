@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,20 +14,33 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     float currentHeal = 100f;
 
+    public LayerMask targetMask;
+    private LayerMask obstrucionMask;
+    private GameObject player;
 
-    public GameObject player;
-
+    [SerializeField]
+    private bool canSeePlayer;
+    [SerializeField]
+    private float radius = 7;
+    [SerializeField]
+    [Range(0,360)]
+    private int angle = 100;
 
     void Awake()
     {
         animator = GetComponent<Animator>();
         movement = Animator.StringToHash("Movement");
+        player = GameObject.FindGameObjectWithTag("Player");
+        StartCoroutine(FOVRoutine());
     }
  
     void Update()
     {
-        LookAt();
-        MoveTowards();
+        if (canSeePlayer)
+        {
+            LookAt();
+            MoveTowards();
+        }
     }
 
     private void MoveTowards()
@@ -60,5 +74,44 @@ public class EnemyController : MonoBehaviour
         {
             Destroy(collision.gameObject);
         }
+    }
+    //FOV = field of view 
+    private IEnumerator FOVRoutine()
+    {
+        WaitForSeconds wait = new WaitForSeconds(0.2f);
+        while (true)
+        {
+            yield return wait;
+            FieldOfViewCheck();
+        }
+    }
+
+    private void FieldOfViewCheck()
+    {
+
+        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
+
+        if (rangeChecks.Length != 0)
+        {
+            //one layer to search
+            Transform target = rangeChecks[0].transform;
+            Vector3 directionToTarget = (target.position - transform.position).normalized;
+
+            if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
+            {
+                float disntanceToTarget = Vector3.Distance(transform.position, target.position);
+                if (!Physics.Raycast(transform.position, directionToTarget, disntanceToTarget, obstrucionMask))
+                {
+                    canSeePlayer = true;
+                }
+                else
+                    canSeePlayer = false;
+            }
+            else
+            {
+                canSeePlayer = false;
+            }
+        }
+        else if (canSeePlayer) canSeePlayer = false;
     }
 }
