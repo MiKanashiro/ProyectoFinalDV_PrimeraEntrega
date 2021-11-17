@@ -20,7 +20,10 @@ public class BulletController : MonoBehaviour
     {
         Destroy(gameObject, timeToDestroy);
     }
+    void Start()
+    {
 
+    }
     // Update is called once per frame
     void Update()
     {
@@ -34,12 +37,18 @@ public class BulletController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         ContactPoint contact = collision.GetContact(0);
-        //magic number = offset for bullets decals;
+
         GameObject.Instantiate(bulletDecal, contact.point + contact.normal * 0.001f, Quaternion.LookRotation(contact.normal)); 
+        
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            
             Destroy(collision.gameObject,1f);
-            Destroy(this.bulletDecal, 1f);
+            
+            //GameManager.addScore();
+            //Debug.Log(GameManager.getScore());
+
+            
         }
     }
 }

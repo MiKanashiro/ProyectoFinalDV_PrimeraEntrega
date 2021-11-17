@@ -22,8 +22,7 @@ public class EnemyController : MonoBehaviour
         animator = GetComponent<Animator>();
         movement = Animator.StringToHash("Movement");
     }
-
-    // Update is called once per frame
+ 
     void Update()
     {
         LookAt();
