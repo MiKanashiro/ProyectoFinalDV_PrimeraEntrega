@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField]
-    float speedEnemy = 5f;
+    float speedEnemy = 3f;
     [SerializeField]
     float speedToLook = 2f;
     private Animator animator;

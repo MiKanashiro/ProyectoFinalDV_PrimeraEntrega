@@ -36,11 +36,12 @@ public class BulletController : MonoBehaviour
         ContactPoint contact = collision.GetContact(0);
 
         // todo destroy instance with body 
-        //GameObject.Instantiate(bulletDecal, contact.point + contact.normal * 0.001f, Quaternion.LookRotation(contact.normal)); 
+        GameObject.Instantiate(bulletDecal, contact.point + contact.normal * 0.001f, Quaternion.LookRotation(contact.normal)); 
         
         if (collision.gameObject.CompareTag("Enemy"))
         {
-          
+
+            
             GameManager.Instance.addScore();
             print("Score: " + GameManager.Instance.getScore());
             Destroy(collision.gameObject, 1f);
