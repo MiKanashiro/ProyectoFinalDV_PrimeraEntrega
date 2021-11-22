@@ -31,12 +31,6 @@ public class EnemySpawnerController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void SpawnEnemy()
     {
         float angle = Random.Range(0f, 360f);

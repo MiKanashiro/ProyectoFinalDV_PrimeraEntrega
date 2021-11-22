@@ -29,7 +29,7 @@ public class EnemyController : MonoBehaviour
     void Awake()
     {
         animator = GetComponent<Animator>();
-        movement = Animator.StringToHash("Movement");
+        movement = Animator.StringToHash("Running");
         player = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(FOVRoutine());
     }

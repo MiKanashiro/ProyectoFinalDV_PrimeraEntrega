@@ -27,7 +27,7 @@ public class BulletController : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
         if(!hit && Vector3.Distance(transform.position, target) < 0.01f)
         {
-            Destroy(gameObject);
+            Destroy(gameObject,2f);
         }
     }
  
@@ -44,7 +44,7 @@ public class BulletController : MonoBehaviour
             
             GameManager.Instance.addScore();
             print("Score: " + GameManager.Instance.getScore());
-            Destroy(collision.gameObject, 1f);
+            Destroy(collision.gameObject);
             //GameManager.addScore();
             //Debug.Log(GameManager.getScore());
 
