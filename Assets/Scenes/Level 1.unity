@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.43937042, g: 0.47957563, b: 0.5240764, a: 1}
+  m_IndirectSpecularColor: {r: 0.38490245, g: 0.39734992, b: 0.38356176, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -155,8 +155,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1717c6e2e405c6347b83136bb76baa6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ammunitionType: 
   plane: {fileID: 2052176040}
   player: {fileID: 1166364700}
+  totalAmmnutionLvl: 10
 --- !u!65 &201006929
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -340,7 +342,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 7343868319953693232, guid: 57ba5fbf0295a0049be8c2cd953478d6, type: 3}
   playerPrefab: {fileID: 6117795766422265325, guid: 6b8ba4de896a7674d9b3e8020852961b, type: 3}
-  difficulty: 1
 --- !u!1001 &498016627
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -567,7 +568,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.006007465, g: 0.2061483, b: 0.4245283, a: 1}
+  m_Color: {r: 0.20784314, g: 0.20784314, b: 0.20784314, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -625,13 +626,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.09672355, y: 0.18561785, z: -0.018363537, w: 0.9776775}
+  m_LocalRotation: {x: 0.00857341, y: 0.18651691, z: -0.0016277125, w: 0.98241305}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 11.3, y: 21.5, z: 0}
+  m_LocalEulerAnglesHint: {x: 1, y: 21.5, z: 0}
 --- !u!1001 &721193952
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -877,7 +878,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.08654708, y: 0, z: 0, w: 0.99624777}
-  m_LocalPosition: {x: 1.1191415, y: 3.3657904, z: -3.56748}
+  m_LocalPosition: {x: 1.3739167, y: 3.3657904, z: -3.56748}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1597,7 +1598,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4454536271526893089, guid: ce0cb5fd27b0995409563b280891668b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.3301297
+      value: 1.6329368
       objectReference: {fileID: 0}
     - target: {fileID: 4454536271526893089, guid: ce0cb5fd27b0995409563b280891668b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1678,7 +1679,7 @@ PrefabInstance:
       objectReference: {fileID: 1166364700}
     - target: {fileID: 6076821830004884719, guid: 3c7d933087bce60419bf169aa5da9834, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.1191415
+      value: 1.3739167
       objectReference: {fileID: 0}
     - target: {fileID: 6076821830004884719, guid: 3c7d933087bce60419bf169aa5da9834, type: 3}
       propertyPath: m_LocalPosition.y

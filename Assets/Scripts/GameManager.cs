@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     private int scoreInstance;
-    private Dictionary<int, Level> levelDic = new Dictionary<int, Level>();
+    public LevelDifficulty levelDifficulty { get; set; }
 
     private void Awake()
     {
@@ -31,14 +31,5 @@ public class GameManager : MonoBehaviour
     {
         return Instance.scoreInstance;
     }
-
-    public void addNewLevel(int levelId, Level level)
-    {
-
-        if (levelDic.ContainsKey(levelId))
-        {
-            levelDic[levelId] = level;
-        }
-        levelDic.Add(levelId, level);
-    }
+   
 }
