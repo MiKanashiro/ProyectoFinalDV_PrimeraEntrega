@@ -72,15 +72,13 @@ public class EnemyController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-        { 
-            GetComponent<PlayerController>().subtractPlayerLives();
+        {
+            collision.gameObject.GetComponent<PlayerController>().subtractPlayerLives();
 
-            if (GetComponent<PlayerController>().getPlayerLives() < 1)
+            if (collision.gameObject.GetComponent<PlayerController>().getPlayerLives() < 1)
             {
                 Destroy(collision.gameObject);
             }
-
-            //falta destruir al enemigo
         }
     }
     //FOV = field of view 
