@@ -7,6 +7,8 @@ public class HUDController : MonoBehaviour
 {
     [SerializeField] private Text textScore;
     [SerializeField] private Text textPlayerLives;
+    [SerializeField] private Text textBullets;
+
     [SerializeField] private PlayerController PlController;
     void Start()
     {
@@ -18,14 +20,21 @@ public class HUDController : MonoBehaviour
     {
         UpdateScoreUI();
         UpdatePlayerLivesUI();
+        UpdateBulletsUI();
     }
 
     void UpdateScoreUI()
     {
         textScore.text = GameManager.Instance.getScore() + " X";
     }
+
     void UpdatePlayerLivesUI()
     {
         textPlayerLives.text = PlController.getPlayerLives() + " X" ;
+    }
+
+    void UpdateBulletsUI()
+    {
+        //textBullets.text =  + " X";
     }
 }
