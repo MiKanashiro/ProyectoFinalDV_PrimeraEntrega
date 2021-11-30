@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammountDificulty: 10
   intialAmmountOfEnemy: 40
-  selectedDifficulty: 1
+  selectedDifficulty: 2
