@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
+    private int playerLives = 3;
+
+    [SerializeField]
     private float playerSpeed = 10.0f;
     [SerializeField]
     private float jumpHeight = 1.0f;
@@ -132,5 +135,18 @@ public class PlayerController : MonoBehaviour
     void setAimDistance()
     {
         aimTarget.position = cameraTransform.position + cameraTransform.forward * aimDistance;
+    }
+
+    public void addPlayerLives()
+    {
+        playerLives += 1;
+    }
+    public void subtractPlayerLives()
+    {
+        playerLives -= 1;
+    }
+    public int getPlayerLives()
+    {
+        return playerLives;
     }
 }

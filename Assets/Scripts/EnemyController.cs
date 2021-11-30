@@ -26,6 +26,7 @@ public class EnemyController : MonoBehaviour
     [Range(0,360)]
     private int angle = 100;
 
+
     void Awake()
     {
         animator = GetComponent<Animator>();
@@ -33,7 +34,7 @@ public class EnemyController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(FOVRoutine());
     }
- 
+   
     void Update()
     {
         if (canSeePlayer)
@@ -71,8 +72,15 @@ public class EnemyController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-        {
-            Destroy(collision.gameObject);
+        { 
+            GetComponent<PlayerController>().subtractPlayerLives();
+
+            if (GetComponent<PlayerController>().getPlayerLives() < 1)
+            {
+                Destroy(collision.gameObject);
+            }
+
+            //falta destruir al enemigo
         }
     }
     //FOV = field of view 
