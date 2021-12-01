@@ -23,7 +23,6 @@ public class LevelDifficulty : ScriptableObject
         foreach (Difficulty diff in (Difficulty[])Enum.GetValues(typeof(Difficulty)))
         {
             int level = (int)diff;
-            Debug.Log((level * ammountDificulty) + intialAmmountOfEnemy);
             levelOptions.Add(diff, (level * ammountDificulty) + intialAmmountOfEnemy);
         }
     }
