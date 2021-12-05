@@ -23,13 +23,32 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     protected float radius = 7;
     [SerializeField]
-    [Range(0,360)]
+    [Range(0, 360)]
     protected int angle = 100;
+
+    [Header("Audio")]
+    [SerializeField]
+    protected AudioClip[] zombieClip;
+    [SerializeField]
+    protected AudioSource source;
+    [SerializeField]
+    protected Vector2 audioPitch = new Vector2(.9f, 1.1f);
+    protected bool isChasign;
 
     protected void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(FOVRoutine());
+
+    }
+
+    protected void Start()
+    {
+        if (source != null)
+        {
+            source.clip = zombieClip[0];
+            source.Play();
+        }
     }
 
     //bullets
@@ -56,11 +75,33 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    protected IEnumerator SoundRoutine(int index, int delay = 0)
+    {
+        WaitForSeconds wait = new WaitForSeconds(zombieClip[index].length);
+        while (true)
+        {
+            yield return wait;
+            PlayAudioClip(index, delay);
+        }
+    }
+
+    protected void PlayAudioClip(int index, int delay = 0)
+    {
+        if(!source.isPlaying)
+        {
+            if (index >= 0 || index < zombieClip.Length)
+            {
+                source.clip = zombieClip[index];
+                source.PlayDelayed(delay);
+            }
+
+        }
+    }
+    
     protected void FieldOfViewCheck()
     {
 
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
-        print(rangeChecks);
         if (rangeChecks.Length != 0)
         {
             //one layer to search
@@ -73,6 +114,8 @@ public class EnemyController : MonoBehaviour
                 if (!Physics.Raycast(transform.position, directionToTarget, disntanceToTarget, obstrucionMask))
                 {
                     canSeePlayer = true;
+
+                    source.Play();
                 }
                 else
                     canSeePlayer = false;

@@ -16,11 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float smootRotation = 5f;
     [SerializeField]
-    private GameObject bulletPrefab;
-    [SerializeField]
-    private Transform barrealTransform;
-    [SerializeField]
-    private Transform bulletParent;
+    private GunfireController gunfireController;
 
     private CharacterController controller;
     private PlayerInput playerInput;
@@ -53,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        
+        gunfireController = GetComponentInChildren<GunfireController>();
         controller = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions["Move"];
@@ -79,22 +75,7 @@ public class PlayerController : MonoBehaviour
 
     private void ShootGun()
     {
-        RaycastHit hit;
-        // todo verify if hit with ground , walls , enemies
-        GameObject bullet = GameObject.Instantiate(bulletPrefab, barrealTransform.position, Quaternion.identity, bulletParent);
-        BulletController bulletController = bullet.GetComponent<BulletController>();
-        if(Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, Mathf.Infinity))
-        {
-            // todo use interface
-            bulletController.target = hit.point;
-            bulletController.hit = true;
-        }
-        else
-        {
-            // magic number = bullet hit miss distance
-            bulletController.target = cameraTransform.position + cameraTransform.forward * 25f;
-            bulletController.hit = false;
-        }
+        gunfireController.FireWeapon();
     }
 
     void Update()

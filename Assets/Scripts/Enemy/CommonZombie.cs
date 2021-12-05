@@ -14,12 +14,12 @@ public class CommonZombie : EnemyController
 
     void Update()
     {
-
-        print(player.transform.position);
         if (canSeePlayer)
         {
             LookAt();
             MoveTowards();
+
+            StartCoroutine(SoundRoutine(1));
         }
     }
 
@@ -27,12 +27,14 @@ public class CommonZombie : EnemyController
     {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speedEnemy * Time.deltaTime);
         animator.Play(movement);
+        
     }
 
     private void LookAt()
     {
         Quaternion newRotation = Quaternion.LookRotation(player.transform.position - transform.position);
         transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, speedToLook * Time.deltaTime);
+        isChasign = true;
     }
 
     protected void OnCollisionEnter(Collision collision)
