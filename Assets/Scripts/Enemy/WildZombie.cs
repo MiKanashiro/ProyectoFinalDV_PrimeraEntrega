@@ -23,20 +23,11 @@ public class WildZombie : EnemyController
         {
             LookAt();
             animator.Play(roarAnimationHash);
-            print(source.isPlaying);
-            if (!source.isPlaying)
-            {
-                PlayAudioClip(2);
-            }
         }
         else if(canSeePlayer && isChasign && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
         {
             LookAt();
             MoveTowards();
-            if (!source.isPlaying)
-            {
-                PlayAudioClip(6);
-            }
         }
     }
 

@@ -18,8 +18,6 @@ public class CommonZombie : EnemyController
         {
             LookAt();
             MoveTowards();
-
-            StartCoroutine(SoundRoutine(1));
         }
     }
 

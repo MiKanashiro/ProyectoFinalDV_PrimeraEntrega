@@ -42,15 +42,6 @@ public class EnemyController : MonoBehaviour
 
     }
 
-    protected void Start()
-    {
-        if (source != null)
-        {
-            source.clip = zombieClip[0];
-            source.Play();
-        }
-    }
-
     //bullets
     public void takeDamage(float damage)
     {
@@ -75,17 +66,8 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    protected IEnumerator SoundRoutine(int index, int delay = 0)
-    {
-        WaitForSeconds wait = new WaitForSeconds(zombieClip[index].length);
-        while (true)
-        {
-            yield return wait;
-            PlayAudioClip(index, delay);
-        }
-    }
 
-    protected void PlayAudioClip(int index, int delay = 0)
+    protected void sd(int index, int delay = 0)
     {
         if(!source.isPlaying)
         {
