@@ -17,7 +17,7 @@ public class EnemySpawnerController : MonoBehaviour
 
     void Start()
     {
-        levelDifficulty = GameManager.Instance.levelDifficulty;
+        levelDifficulty = GameManager.Instance?.levelDifficulty ?? new LevelDifficulty();
         difficulty = levelDifficulty.selectedDifficulty;
         totalZombies = levelDifficulty.LevelOptions[difficulty];
         switch (difficulty)
@@ -41,9 +41,13 @@ public class EnemySpawnerController : MonoBehaviour
         float angle = Random.Range(0f, 360f);
         float distanceFromPlayer = Random.Range(20f, 25f);
 
-        Vector3 spawnPosition = playerPrefab.transform.position + new Vector3 (Mathf.Cos(angle),0,Mathf.Sin(angle))*distanceFromPlayer;
+        Vector3 spawnPosition = transform.position + new Vector3 (Mathf.Cos(angle),0,Mathf.Sin(angle))*distanceFromPlayer;
         Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPosition, Quaternion.identity);
         totalZombies = totalZombies - 1;
+        if(totalZombies == 0)
+        {
+            CancelInvoke("SpawnEnemy");
+        }
     }
 }
 

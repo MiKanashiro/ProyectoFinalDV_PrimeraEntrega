@@ -26,6 +26,11 @@ public class LevelDifficulty : ScriptableObject
             levelOptions.Add(diff, (level * ammountDificulty) + intialAmmountOfEnemy);
         }
     }
+    // this function is only for dev environment --> todo only enable only in dev environment
+    public LevelDifficulty()
+    {
+        this.selectedDifficulty = Difficulty.Easy;
+    }
 }
 
 
