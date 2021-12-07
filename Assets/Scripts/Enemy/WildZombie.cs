@@ -48,12 +48,13 @@ public class WildZombie : EnemyController
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerController>().subtractPlayerLives();
+            //collision.gameObject.GetComponent<PlayerController>().subtractPlayerLives();
 
-            if (collision.gameObject.GetComponent<PlayerController>().getPlayerLives() < 1)
-            {
-                Destroy(collision.gameObject);
-            }
+            //if (collision.gameObject.GetComponent<PlayerController>().getPlayerLives() < 1)
+            //{
+               // Destroy(collision.gameObject);
+            //}
         }
+
     }
 }

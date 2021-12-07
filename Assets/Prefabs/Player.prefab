@@ -312,13 +312,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b2d6c4162311574498dff1c3e80690e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1045812832861878667, guid: 1d03469b88080f543b9c608a412c9b17, type: 3}
+        m_TargetAssemblyTypeName: HUDController, Assembly-CSharp
+        m_MethodName: OnDeathHandler
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4596843612516475699, guid: 5eb3f8daba48dac4f861da70ccb09821, type: 3}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: GameOver
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7328793742388305748, guid: 5536e6a6ee812f442ac8a58de0fe8a69, type: 3}
+        m_TargetAssemblyTypeName: EnemySpawnerController, Assembly-CSharp
+        m_MethodName: OnDeathHandler
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onLivesChange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1045812832861878667, guid: 1d03469b88080f543b9c608a412c9b17, type: 3}
+        m_TargetAssemblyTypeName: HUDController, Assembly-CSharp
+        m_MethodName: OnLivesChangeHandler
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  playerLives: 3
   playerSpeed: 10
   jumpHeight: 1
   gravityValue: -9.81
   smootRotation: 0.9
-  bulletPrefab: {fileID: 3343269558507673064, guid: 1d4c0cecfb44f574ca7cac65f8cb641a, type: 3}
-  barrealTransform: {fileID: 6117795766502361850}
-  bulletParent: {fileID: 0}
+  gunfireController: {fileID: 0}
   animationSmoothTime: 0.05
   animatonPlayTransition: 0.15
   aimTarget: {fileID: 6117795768123853410}

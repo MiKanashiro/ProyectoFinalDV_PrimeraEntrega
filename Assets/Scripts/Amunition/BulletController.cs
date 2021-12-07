@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BulletController : MonoBehaviour
 {
-
+    [SerializeField]
+    private UnityEvent onHit;
 
     [SerializeField]
     private GameObject bulletDecal;
@@ -41,14 +43,11 @@ public class BulletController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
 
-            
-            GameManager.Instance.addScore();
-            print("Score: " + GameManager.Instance.getScore());
+            //GameManager.Instance.addScore();
+            //print("Score: " + GameManager.Instance.getScore());
+            onHit?.Invoke();
             Destroy(collision.gameObject);
-            //GameManager.addScore();
-            //Debug.Log(GameManager.getScore());
-
-
+            
         }
     }
 }

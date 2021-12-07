@@ -1,9 +1,16 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(CharacterController),typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
+    private UnityEvent onDeath;
+
+    [SerializeField]
+    private UnityEvent<int> onLivesChange;
+
     [SerializeField]
     private int playerLives = 3;
 
@@ -129,5 +136,24 @@ public class PlayerController : MonoBehaviour
     public int getPlayerLives()
     {
         return playerLives;
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            subtractPlayerLives();
+            onLivesChange?.Invoke(playerLives);
+
+            if (getPlayerLives() < 1)
+            {
+                onDeath?.Invoke();
+                Destroy(gameObject);
+                
+            }
+        }
+
+        Destroy(collision.gameObject);
     }
 }

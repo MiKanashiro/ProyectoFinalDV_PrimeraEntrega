@@ -34,17 +34,17 @@ public class CommonZombie : EnemyController
         transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, speedToLook * Time.deltaTime);
         isChasign = true;
     }
-
     protected void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerController>().subtractPlayerLives();
+            //collision.gameObject.GetComponent<PlayerController>().subtractPlayerLives();
 
-            if (collision.gameObject.GetComponent<PlayerController>().getPlayerLives() < 1)
-            {
-                Destroy(collision.gameObject);
-            }
+            //if (collision.gameObject.GetComponent<PlayerController>().getPlayerLives() < 1)
+            //{
+            // Destroy(collision.gameObject);
+            //}
         }
+
     }
 }

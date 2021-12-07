@@ -9,19 +9,39 @@ public class HUDController : MonoBehaviour
     [SerializeField] private Text textPlayerLives;
     [SerializeField] private Text textBullets;
 
+    [SerializeField] private Text textAnnounce;
+
     [SerializeField] private PlayerController PlController;
-    void Start()
-    {
-        
-    }
+
 
     // Update is called once per frame
+    void Start()
+    {
+        textPlayerLives.text = PlController.getPlayerLives() + " X";
+        textScore.text = "0" + " X";
+    }
     void Update()
     {
-        UpdateScoreUI();
-        UpdatePlayerLivesUI();
-        UpdateBulletsUI();
+        //UpdateScoreUI();
+        //UpdatePlayerLivesUI();
+        //UpdateBulletsUI();
     }
+    public void OnDeathHandler()
+    {
+       textAnnounce.text = "GAME OVER";
+    }
+    public void OnLivesChangeHandler(int lives)
+    {
+        Debug.Log("HUD controller - On Lives");
+        //textPlayerLives.text = PlController.getPlayerLives() + " X";
+        textPlayerLives.text = lives + " X";
+    }
+    public void OnHitHandler()
+    {
+        Debug.Log("HUD controller - On hit");
+        textScore.text = GameManager.Instance.getScore() + " X";
+    }
+
 
     void UpdateScoreUI()
     {

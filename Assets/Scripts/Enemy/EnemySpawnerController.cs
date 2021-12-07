@@ -49,5 +49,10 @@ public class EnemySpawnerController : MonoBehaviour
             CancelInvoke("SpawnEnemy");
         }
     }
+    public void OnDeathHandler()
+    {
+        Debug.Log("Enemy Spawn Controller - On death");
+        CancelInvoke("SpawnEnemy");
+    }
 }
 
