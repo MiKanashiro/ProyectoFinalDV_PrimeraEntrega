@@ -1,9 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemySpawnerController : MonoBehaviour
 {
+
+
+    [SerializeField]
+    private UnityEvent<int> zombiesChange;
+
     public GameObject[] enemyPrefabs;
     public GameObject playerPrefab;
 
@@ -44,7 +50,8 @@ public class EnemySpawnerController : MonoBehaviour
         Vector3 spawnPosition = transform.position + new Vector3 (Mathf.Cos(angle),0,Mathf.Sin(angle))*distanceFromPlayer;
         Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPosition, Quaternion.identity);
         totalZombies = totalZombies - 1;
-        if(totalZombies == 0)
+        zombiesChange?.Invoke(levelDifficulty.LevelOptions[difficulty] - GameManager.Instance.getScore());
+        if (totalZombies == 0)
         {
             CancelInvoke("SpawnEnemy");
         }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,7 @@ public class HUDController : MonoBehaviour
     [SerializeField] private Text textScore;
     [SerializeField] private Text textPlayerLives;
     [SerializeField] private Text textBullets;
+    [SerializeField] private TMP_Text totalZombies;
 
     [SerializeField] private Text textAnnounce;
 
@@ -40,6 +42,12 @@ public class HUDController : MonoBehaviour
     {
         Debug.Log("HUD controller - On hit");
         textScore.text = GameManager.Instance.getScore() + " X";
+    }
+
+    public void OnZombiesReminderHandler(int zombies)
+    {
+        Debug.Log("HUD controller - On Zombies");
+        totalZombies.text = "Zombies " + zombies;
     }
 
 
