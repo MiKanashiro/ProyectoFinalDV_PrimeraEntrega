@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammountDificulty: 10
   intialAmmountOfEnemy: 40
+  playerPosition: {x: 647.5, y: 16.32, z: 414.2}
+  worldLimitPosition: {x: 645.00433, y: 85.327225, z: 386.35995}
   selectedDifficulty: 2

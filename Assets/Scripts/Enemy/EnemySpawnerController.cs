@@ -10,8 +10,12 @@ public class EnemySpawnerController : MonoBehaviour
     [SerializeField]
     private UnityEvent<int> zombiesChange;
 
+    [SerializeField]
+    private GameObject worldLimits;
+
     public GameObject[] enemyPrefabs;
     public GameObject playerPrefab;
+
 
     private LevelDifficulty levelDifficulty;
     
@@ -26,6 +30,8 @@ public class EnemySpawnerController : MonoBehaviour
         levelDifficulty = GameManager.Instance?.levelDifficulty ?? new LevelDifficulty();
         difficulty = levelDifficulty.selectedDifficulty;
         totalZombies = levelDifficulty.LevelOptions[difficulty];
+        playerPrefab.transform.position = levelDifficulty.InitPlayerPosition;
+        worldLimits.transform.position = levelDifficulty.InitWorldLimitPosition;
         switch (difficulty)
         {
             case Difficulty.Easy:
