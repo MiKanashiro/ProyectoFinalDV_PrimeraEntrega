@@ -13,6 +13,8 @@ public class SwichCam : MonoBehaviour
     private Canvas thridPersonCanvas;
     [SerializeField]
     private Canvas aimdPersonCanvas;
+    [SerializeField]
+    private GameObject camera3rdPerson;
 
     private CinemachineVirtualCamera virtualCamera;
     private InputAction aimAction;
@@ -38,6 +40,8 @@ public class SwichCam : MonoBehaviour
 
     private void StartAim()
     {
+        gameObject.SetActive(true);
+        camera3rdPerson.SetActive(false);
         virtualCamera.Priority += priorityBoostAmount;
         aimdPersonCanvas.enabled = true;
         thridPersonCanvas.enabled = false;
@@ -46,6 +50,8 @@ public class SwichCam : MonoBehaviour
 
     private void CancelAim()
     {
+        gameObject.SetActive(false);
+        camera3rdPerson.SetActive(true);
         virtualCamera.Priority -= priorityBoostAmount;
         aimdPersonCanvas.enabled = false;
         thridPersonCanvas.enabled = true;
