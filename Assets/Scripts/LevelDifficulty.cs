@@ -7,9 +7,9 @@ public class LevelDifficulty : ScriptableObject
 {
 
     [SerializeField]
-    private int ammountDificulty = 10;
+    private int ammountDificulty = 1;
     [SerializeField]
-    private int intialAmmountOfEnemy = 40;
+    private int intialAmmountOfEnemy = 1;
     [SerializeField]
     private Vector3 playerPosition;
     [SerializeField]
@@ -37,7 +37,7 @@ public class LevelDifficulty : ScriptableObject
     // this function is only for dev environment --> todo enable only in dev environment
     public LevelDifficulty()
     {
-        playerPosition = new Vector3(647.5f, 16.32f, 414.2f);
+        //playerPosition = new Vector3(647.5f, 16.32f, 414.2f);
         worldLimitPosition = new Vector3(645, 85.32f, 386.35f);
         this.selectedDifficulty = Difficulty.Easy;
     }

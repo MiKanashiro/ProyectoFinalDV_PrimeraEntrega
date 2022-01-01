@@ -35,8 +35,8 @@ public class MapDisplay : MonoBehaviour
 
         UpdateZombiesDetails();
         dropdown.onValueChanged.AddListener(delegate { DropdownItemSelected(dropdown); });
-
-        bool mapUnlocked = PlayerPrefs.GetInt("currentScene", 0) >= _map.mapIndex;
+        //PlayerPrefs.DeleteAll();
+        bool mapUnlocked = PlayerPrefs.GetInt(GameManager.LEVEL_KEY, 0) >= _map.mapIndex;
 
         lockIcon.SetActive(!mapUnlocked);
         playButton.interactable = mapUnlocked;
@@ -48,6 +48,7 @@ public class MapDisplay : MonoBehaviour
 
         playButton.onClick.RemoveAllListeners();
         var nameScene = _map.sceneToLoad.name;
+        print(levelDifficulty);
         GameManager.Instance.levelDifficulty = levelDifficulty;
         playButton.onClick.AddListener(() => SceneManager.LoadScene((nameScene)));
     }

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 581fb1c4a64af084296032daa5063ef2, type: 3}
   m_Name: Cementery
   m_EditorClassIdentifier: 
-  ammountDificulty: 10
-  intialAmmountOfEnemy: 40
+  ammountDificulty: 1
+  intialAmmountOfEnemy: 5
   playerPosition: {x: 647.5, y: 16.32, z: 414.2}
   worldLimitPosition: {x: 645.00433, y: 85.327225, z: 386.35995}
   selectedDifficulty: 2

@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
+    public static readonly string LEVEL_KEY = "CurrentLevel";
     public static GameManager Instance { get; private set; }
     private int scoreInstance;
     public LevelDifficulty levelDifficulty { get; set; }
@@ -37,6 +38,11 @@ public class GameManager : MonoBehaviour
     public int getScore()
     {
         return Instance.scoreInstance;
+    }
+
+    public bool LevelFinish()
+    {
+        return getScore() == levelDifficulty.LevelOptions[levelDifficulty.selectedDifficulty];
     }
 
     public void OnHitHandler()

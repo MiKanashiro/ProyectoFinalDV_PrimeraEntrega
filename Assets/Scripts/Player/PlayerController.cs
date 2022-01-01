@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        transform.position = GameManager.Instance.levelDifficulty.InitPlayerPosition;
         gunfireController = GetComponentInChildren<GunfireController>();
         controller = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
@@ -87,7 +88,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-
+        
         setAimDistance();
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
@@ -106,8 +107,8 @@ public class PlayerController : MonoBehaviour
         // Changes the height position of the player..
         if (jumpAction.triggered && groundedPlayer)
         {
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-            animator.CrossFade(jumpAnimation, animatonPlayTransition);
+           // playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+           // animator.CrossFade(jumpAnimation, animatonPlayTransition);
         }
 
         playerVelocity.y += gravityValue * Time.deltaTime;
@@ -153,7 +154,5 @@ public class PlayerController : MonoBehaviour
                 
             }
         }
-
-        Destroy(collision.gameObject);
     }
 }
