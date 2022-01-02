@@ -1,0 +1,2 @@
+
+La mecánica principal de este proyecto es la supervivencia del jugador, poniendo a prueba las habilidades y reflejos del usuario a través de zombies que perseguirán constantemente al jugador y éste tendrá que eliminarlos con un arma con munición ilimitada. Además en el juego los zombies harán que el jugador muera por contacto teniendo sólo 3 vidas que le permitirán continuar con el juego.

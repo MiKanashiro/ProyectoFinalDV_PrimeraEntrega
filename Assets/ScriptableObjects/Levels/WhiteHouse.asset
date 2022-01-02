@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 581fb1c4a64af084296032daa5063ef2, type: 3}
   m_Name: WhiteHouse
   m_EditorClassIdentifier: 
-  ammountDificulty: 3
-  intialAmmountOfEnemy: 15
+  ammountDificulty: 20
+  intialAmmountOfEnemy: 40
   playerPosition: {x: 489.41, y: 17, z: 473.5}
   worldLimitPosition: {x: 493.5, y: 85.327225, z: 452.02}
   selectedDifficulty: 2

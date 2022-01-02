@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 581fb1c4a64af084296032daa5063ef2, type: 3}
   m_Name: BigHouse
   m_EditorClassIdentifier: 
-  ammountDificulty: 2
-  intialAmmountOfEnemy: 10
+  ammountDificulty: 15
+  intialAmmountOfEnemy: 35
   playerPosition: {x: 555.2, y: 16.32, z: 419}
   worldLimitPosition: {x: 559.08, y: 85.327225, z: 386.35995}
   selectedDifficulty: 2
