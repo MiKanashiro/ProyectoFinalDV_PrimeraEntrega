@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level 2
   m_EditorClassIdentifier: 
   mapIndex: 1
-  mapName: LightNight
+  mapName: BigHouse
   mapDescription: All the zombies can see you
   nameColor: {r: 0.5660378, g: 0, b: 0, a: 1}
   mapImage: {fileID: 21300000, guid: 73a8139060eade64db24a2a045713b4f, type: 3}

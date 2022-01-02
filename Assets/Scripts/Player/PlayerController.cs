@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         transform.position = GameManager.Instance.levelDifficulty.InitPlayerPosition;
+        
         gunfireController = GetComponentInChildren<GunfireController>();
         controller = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();

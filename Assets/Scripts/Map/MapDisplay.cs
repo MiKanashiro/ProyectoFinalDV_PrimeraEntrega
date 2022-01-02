@@ -48,7 +48,6 @@ public class MapDisplay : MonoBehaviour
 
         playButton.onClick.RemoveAllListeners();
         var nameScene = _map.sceneToLoad.name;
-        print(levelDifficulty);
         GameManager.Instance.levelDifficulty = levelDifficulty;
         playButton.onClick.AddListener(() => SceneManager.LoadScene((nameScene)));
     }

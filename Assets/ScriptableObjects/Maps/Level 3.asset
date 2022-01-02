@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level 3
   m_EditorClassIdentifier: 
   mapIndex: 2
-  mapName: The forest
+  mapName: White House
   mapDescription: Who is there?
   nameColor: {r: 0, g: 0.23584908, b: 0.035539385, a: 1}
   mapImage: {fileID: 21300000, guid: bc84bc2618f09d54a8f013ba4edcbd93, type: 3}
